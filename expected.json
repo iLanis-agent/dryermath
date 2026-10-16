@@ -1,0 +1,237 @@
+[
+ {
+  "fn": "runTruth",
+  "args": [
+   12,
+   3,
+   1,
+   35
+  ],
+  "out": "12 straight feet with 3 90-degree elbows and 1 45-degree elbow counts as 29.5 feet - inside the claim honestly."
+ },
+ {
+  "fn": "runTruth",
+  "args": [
+   5,
+   0,
+   0,
+   35
+  ],
+  "out": "5 straight feet with 0 90-degree elbows and 0 45-degree elbows counts as 5.0 feet - well inside the claim honestly."
+ },
+ {
+  "fn": "runTruth",
+  "args": [
+   20,
+   2,
+   2,
+   35
+  ],
+  "out": "20 straight feet with 2 90-degree elbows and 2 45-degree elbows counts as 35.0 feet - inside the claim honestly."
+ },
+ {
+  "fn": "runTruth",
+  "args": [
+   25,
+   3,
+   0,
+   35
+  ],
+  "out": "25 straight feet with 3 90-degree elbows and 0 45-degree elbows counts as 40.0 feet - 5.0 feet past the claim honestly."
+ },
+ {
+  "fn": "runTruth",
+  "args": [
+   1,
+   0,
+   1,
+   35
+  ],
+  "out": "1 straight foot with 0 90-degree elbows and 1 45-degree elbow counts as 3.5 feet - well inside the claim honestly."
+ },
+ {
+  "fn": "runTruth",
+  "args": [
+   0,
+   1,
+   0,
+   35
+  ],
+  "out": "0 straight feet with 1 90-degree elbow and 0 45-degree elbows counts as 5.0 feet - well inside the claim honestly."
+ },
+ {
+  "fn": "runTruth",
+  "args": [
+   -1,
+   0,
+   0,
+   35
+  ],
+  "err": "the straight duct must be zero or more"
+ },
+ {
+  "fn": "runTruth",
+  "args": [
+   12,
+   0,
+   0,
+   0
+  ],
+  "err": "the claimed run must be above zero"
+ },
+ {
+  "fn": "runTruth",
+  "args": [
+   12,
+   -1,
+   0,
+   35
+  ],
+  "err": "the 90-degree elbows must be zero or more"
+ },
+ {
+  "fn": "elbowTruth",
+  "args": [
+   12,
+   35
+  ],
+  "out": "After 12 straight feet, the 35-foot claim leaves room for 4 90-degree elbows - a few elbows honestly."
+ },
+ {
+  "fn": "elbowTruth",
+  "args": [
+   33,
+   35
+  ],
+  "out": "After 33 straight feet, the 35-foot claim leaves room for 0 90-degree elbows - no elbows to spare honestly."
+ },
+ {
+  "fn": "elbowTruth",
+  "args": [
+   25,
+   35
+  ],
+  "out": "After 25 straight feet, the 35-foot claim leaves room for 2 90-degree elbows - a couple of elbows honestly."
+ },
+ {
+  "fn": "elbowTruth",
+  "args": [
+   5,
+   35
+  ],
+  "out": "After 5 straight feet, the 35-foot claim leaves room for 6 90-degree elbows - elbows to spare honestly."
+ },
+ {
+  "fn": "elbowTruth",
+  "args": [
+   40,
+   35
+  ],
+  "out": "40 straight feet is already 5.0 feet past the 35-foot claim, before any elbows honestly."
+ },
+ {
+  "fn": "elbowTruth",
+  "args": [
+   35,
+   35
+  ],
+  "out": "After 35 straight feet, the 35-foot claim leaves room for 0 90-degree elbows - no elbows to spare honestly."
+ },
+ {
+  "fn": "elbowTruth",
+  "args": [
+   0,
+   35
+  ],
+  "out": "After 0 straight feet, the 35-foot claim leaves room for 7 90-degree elbows - elbows to spare honestly."
+ },
+ {
+  "fn": "elbowTruth",
+  "args": [
+   12,
+   0
+  ],
+  "err": "the claimed run must be above zero"
+ },
+ {
+  "fn": "straightTruth",
+  "args": [
+   3,
+   1,
+   35
+  ],
+  "out": "3 90-degree and 1 45-degree elbows spend 17.5 feet of the 35-foot claim, leaving 17.5 straight feet - about half the run honestly."
+ },
+ {
+  "fn": "straightTruth",
+  "args": [
+   1,
+   0,
+   35
+  ],
+  "out": "1 90-degree and 0 45-degree elbow spends 5.0 feet of the 35-foot claim, leaving 30.0 straight feet - most of the run honestly."
+ },
+ {
+  "fn": "straightTruth",
+  "args": [
+   0,
+   0,
+   35
+  ],
+  "out": "0 90-degree and 0 45-degree elbows spend 0.0 feet of the 35-foot claim, leaving 35.0 straight feet - most of the run honestly."
+ },
+ {
+  "fn": "straightTruth",
+  "args": [
+   6,
+   2,
+   35
+  ],
+  "out": "6 90-degree and 2 45-degree elbows spend 35.0 feet of the 35-foot claim, the whole claim exactly honestly."
+ },
+ {
+  "fn": "straightTruth",
+  "args": [
+   5,
+   1,
+   35
+  ],
+  "out": "5 90-degree and 1 45-degree elbows spend 27.5 feet of the 35-foot claim, leaving 7.5 straight feet - a short stub honestly."
+ },
+ {
+  "fn": "straightTruth",
+  "args": [
+   0,
+   1,
+   35
+  ],
+  "out": "0 90-degree and 1 45-degree elbow spends 2.5 feet of the 35-foot claim, leaving 32.5 straight feet - most of the run honestly."
+ },
+ {
+  "fn": "straightTruth",
+  "args": [
+   8,
+   0,
+   35
+  ],
+  "out": "8 90-degree and 0 45-degree elbows spend 40.0 feet of the 35-foot claim, the whole claim and then some honestly."
+ },
+ {
+  "fn": "straightTruth",
+  "args": [
+   3,
+   1,
+   0
+  ],
+  "err": "the claimed run must be above zero"
+ },
+ {
+  "fn": "straightTruth",
+  "args": [
+   -1,
+   0,
+   35
+  ],
+  "err": "the 90-degree elbows must be zero or more"
+ }
+]
