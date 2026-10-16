@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dryer Math</title>
+<style>
+  :root { --accent: #96604a; --warn: #a83232; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 32px 16px 64px; background: #f9f6f4; color: #2a2523;
+         font-family: Georgia, 'Times New Roman', serif; }
+  main { max-width: 680px; margin: 0 auto; }
+  h1 { color: var(--accent); font-size: 2.2rem; margin: 0 0 4px; }
+  .tag { font-style: italic; color: var(--accent); margin: 0 0 28px; }
+  .boundary { border-left: 4px solid var(--warn); background: #fdf1f1; padding: 16px 20px;
+              border-radius: 8px; margin: 0 0 28px; }
+  .boundary h2 { color: var(--warn); font-size: 1.1rem; margin: 0 0 8px; }
+  .boundary p { margin: 0; line-height: 1.5; }
+  .card { background: #fff; border: 1px solid #e5ddd9; border-left: 4px solid var(--accent);
+          border-radius: 8px; padding: 20px 24px; margin: 0 0 24px; }
+  .card h2 { margin: 0 0 14px; font-size: 1.25rem; }
+  label { display: block; font-size: 0.95rem; margin: 10px 0 4px; }
+  input { width: 100%; max-width: 220px; padding: 8px 10px; font-size: 1rem;
+          border: 1px solid #d0c3bc; border-radius: 6px; background: #f5f0ed; }
+  .out { margin-top: 16px; font-size: 1.05rem; font-weight: bold; color: var(--accent);
+         line-height: 1.5; }
+  .out.err { color: var(--warn); }
+  footer { margin-top: 32px; font-size: 0.85rem; color: #8d817c; line-height: 1.5; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Dryer Math</h1>
+  <p class="tag">Run truth, elbow truth and straight truth - labeled norms, honest arithmetic.</p>
+
+  <div class="boundary">
+    <h2>The boundary</h2>
+    <p>Dryer Math keeps duct-length arithmetic only. Every foot and elbow figure is a labeled
+    norm, not a promise - lint, sagging flex and crushed duct change real airflow, and lint is
+    a fire hazard. Follow the dryer's manual and local code over anything this page says, and
+    clean the lint path on the schedule the manufacturer sets.</p>
+  </div>
+
+  <div class="card">
+    <h2>The run truth</h2>
+    <label for="r-feet">Straight duct (feet)</label>
+    <input id="r-feet" type="number" step="any" value="12">
+    <label for="r-n90">90-degree elbows</label>
+    <input id="r-n90" type="number" step="any" value="3">
+    <label for="r-n45">45-degree elbows</label>
+    <input id="r-n45" type="number" step="any" value="1">
+    <label for="r-max">Claimed maximum run (feet)</label>
+    <input id="r-max" type="number" step="any" value="35">
+    <p class="out" id="r-out"></p>
+  </div>
+
+  <div class="card">
+    <h2>The elbow truth</h2>
+    <label for="e-feet">Straight duct (feet)</label>
+    <input id="e-feet" type="number" step="any" value="12">
+    <label for="e-max">Claimed maximum run (feet)</label>
+    <input id="e-max" type="number" step="any" value="35">
+    <p class="out" id="e-out"></p>
+  </div>
+
+  <div class="card">
+    <h2>The straight truth</h2>
+    <label for="s-n90">90-degree elbows</label>
+    <input id="s-n90" type="number" step="any" value="3">
+    <label for="s-n45">45-degree elbows</label>
+    <input id="s-n45" type="number" step="any" value="1">
+    <label for="s-max">Claimed maximum run (feet)</label>
+    <input id="s-max" type="number" step="any" value="35">
+    <p class="out" id="s-out"></p>
+  </div>
+
+  <footer>
+    Every figure here is hypothetical arithmetic on labeled norms, not a statement about any real
+    dryer, duct or installation. <a href="index.html">About Dryer Math</a>
+  </footer>
+</main>
+<script src="engine.js"></script>
+<script>
+function num(id) { return parseFloat(document.getElementById(id).value); }
+function render(id, fn) {
+  const el = document.getElementById(id);
+  try {
+    el.textContent = fn();
+    el.classList.remove("err");
+  } catch (e) {
+    el.textContent = e.message;
+    el.classList.add("err");
+  }
+}
+function update() {
+  render("r-out", () => runTruth(num("r-feet"), num("r-n90"), num("r-n45"), num("r-max")));
+  render("e-out", () => elbowTruth(num("e-feet"), num("e-max")));
+  render("s-out", () => straightTruth(num("s-n90"), num("s-n45"), num("s-max")));
+}
+document.querySelectorAll("input").forEach(i => i.addEventListener("input", update));
+update();
+</script>
+</body>
+</html>
